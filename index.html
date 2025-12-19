@@ -3,77 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IIT Aerospace Engineering: 2025 Cut-off Analysis</title>
     
-    <!-- 1. External Libraries (CDNs) -->
-    <!-- Tailwind CSS for Layout -->
+    <title>IIT Aerospace Engineering: 2025 Cut-off Analysis</title>
+    <meta name="description" content="A detailed research infographic on IIT Aerospace Engineering cut-offs, rank trends, and admission analysis for 2025.">
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Chart.js for Data Viz -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <!-- Marked.js for AI Text Formatting -->
-    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
     
-    <!-- 2. Custom CSS -->
     <style>
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #f0f4f8;
-            color: #1e293b;
-        }
-        
-        /* Vibrant Tech Palette */
-        .bg-primary { background-color: #2563eb; } /* Royal Blue */
-        .bg-secondary { background-color: #0ea5e9; } /* Sky Blue */
-        .bg-dark { background-color: #0f172a; } /* Slate 900 */
-        
-        /* Card Effects */
-        .card {
-            background: white;
-            border-radius: 1rem;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-            transition: transform 0.2s ease-in-out;
-        }
-        .card:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-        }
-
-        /* Responsive Chart Containers (Critical for Chart.js) */
-        .chart-container {
-            position: relative;
-            width: 100%;
-            height: 350px;
-        }
-        @media (min-width: 768px) {
-            .chart-container { height: 400px; }
-        }
-
-        /* Loading Spinner Animation */
-        .loader {
-            border: 3px solid #f3f3f3;
-            border-radius: 50%;
-            border-top: 3px solid #2563eb;
-            width: 20px;
-            height: 20px;
-            animation: spin 1s linear infinite;
-        }
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-
-        /* Markdown Styles for AI Output */
-        .prose strong { color: #1e40af; font-weight: 700; }
-        .prose ul { list-style-type: disc; padding-left: 1.5em; margin: 0.5em 0; }
-        .prose p { margin-bottom: 0.5em; }
-        .prose h1, .prose h2, .prose h3 { font-weight: 700; color: #1e3a8a; margin-top: 1em; }
+        body { font-family: 'Inter', sans-serif; background-color: #f0f4f8; color: #1e293b; }
+        .bg-dark { background-color: #0f172a; }
+        .bg-secondary { background-color: #0ea5e9; }
+        .card { background: white; border-radius: 1rem; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1); transition: transform 0.2s; }
+        .card:hover { transform: translateY(-2px); box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1); }
+        .chart-container { position: relative; width: 100%; height: 350px; }
+        @media (min-width: 768px) { .chart-container { height: 400px; } }
     </style>
 </head>
 <body class="antialiased">
 
-    <!-- Header -->
     <header class="bg-dark text-white pt-12 pb-20 px-4 relative overflow-hidden">
         <div class="absolute top-0 right-0 opacity-10 text-9xl font-bold select-none pointer-events-none -mr-10 -mt-10">AERO</div>
         <div class="max-w-6xl mx-auto text-center relative z-10">
@@ -85,15 +33,13 @@
                 <span class="text-secondary">Aerospace Engineering</span>
             </h1>
             <p class="text-xl text-gray-300 max-w-2xl mx-auto">
-                A data-driven breakdown of cut-offs, trends, and career horizons for India's top Aerospace programs.
+                A data-driven breakdown of cut-offs and trends for India's top Aerospace programs.
             </p>
         </div>
     </header>
 
-    <!-- Main Content -->
     <main class="max-w-6xl mx-auto px-4 -mt-10 pb-20">
         
-        <!-- Key Stats Row -->
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
             <div class="card p-6 border-l-4 border-blue-600">
                 <div class="text-sm text-gray-500 font-semibold uppercase">Most Competitive</div>
@@ -112,51 +58,18 @@
             </div>
         </div>
 
-        <!-- Section 1: Landscape & Comparator -->
         <section class="mb-16">
             <div class="text-center mb-8">
                 <h2 class="text-3xl font-bold text-gray-900">The Competitive Landscape (2025)</h2>
-                <p class="text-gray-600 max-w-2xl mx-auto mt-2">
-                    Closing Ranks for General Category. Lower rank = Higher competition.
-                </p>
+                <p class="text-gray-600 max-w-2xl mx-auto mt-2">Closing Ranks for General Category. Lower rank = Higher competition.</p>
             </div>
-
             <div class="card p-6 md:p-8">
-                <!-- Bar Chart -->
                 <div class="chart-container">
                     <canvas id="cutoffBarChart"></canvas>
-                </div>
-
-                <!-- AI Feature: Institute Comparator -->
-                <div class="mt-8 border-t border-gray-100 pt-6">
-                    <h3 class="text-lg font-bold text-gray-800 mb-4 flex items-center">
-                        ✨ Compare Institutes with AI
-                    </h3>
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
-                        <select id="comp-iit-1" class="p-2 border border-gray-300 rounded-md text-sm focus:ring-2 focus:ring-blue-500 outline-none">
-                            <option value="IIT Bombay">IIT Bombay</option>
-                            <option value="IIT Madras">IIT Madras</option>
-                            <option value="IIT Kanpur">IIT Kanpur</option>
-                            <option value="IIT Kharagpur">IIT Kharagpur</option>
-                            <option value="IIT Hyderabad">IIT Hyderabad</option>
-                        </select>
-                        <select id="comp-iit-2" class="p-2 border border-gray-300 rounded-md text-sm focus:ring-2 focus:ring-blue-500 outline-none">
-                            <option value="IIT Madras" selected>IIT Madras</option>
-                            <option value="IIT Bombay">IIT Bombay</option>
-                            <option value="IIT Kanpur">IIT Kanpur</option>
-                            <option value="IIT Kharagpur">IIT Kharagpur</option>
-                            <option value="IIT Hyderabad">IIT Hyderabad</option>
-                        </select>
-                        <button id="btn-compare" class="bg-blue-600 hover:bg-blue-700 text-white text-sm font-bold py-2 px-4 rounded-md transition shadow-sm flex items-center justify-center">
-                            Compare A vs B
-                        </button>
-                    </div>
-                    <div id="ai-compare-output" class="hidden p-4 bg-blue-50 rounded-lg border border-blue-100 text-sm text-gray-800 prose"></div>
                 </div>
             </div>
         </section>
 
-        <!-- Section 2: Trends & AI Analyst -->
         <section class="mb-16">
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
                 <div class="flex flex-col justify-center">
@@ -164,13 +77,6 @@
                     <p class="text-gray-600 mb-6">
                         Comparing 2024 and 2025 reveals "rank inflation". As interest in space tech grows, top rankers are locking these seats earlier.
                     </p>
-                    
-                    <!-- Trend Analysis Button -->
-                    <button id="btn-analyze-trend" class="w-fit mb-6 bg-amber-500 hover:bg-amber-600 text-white font-bold py-2 px-4 rounded-full shadow-md flex items-center gap-2 transition">
-                        <span>✨ AI Trend Analysis</span>
-                    </button>
-                    <div id="ai-trend-output" class="hidden p-4 mb-4 bg-amber-50 rounded-lg border border-amber-200 text-sm prose"></div>
-
                     <div class="space-y-4">
                         <div class="flex items-start">
                             <div class="bg-blue-100 text-blue-600 font-bold rounded-full w-6 h-6 flex items-center justify-center text-xs mt-1">1</div>
@@ -178,13 +84,12 @@
                         </div>
                         <div class="flex items-start">
                             <div class="bg-blue-100 text-blue-600 font-bold rounded-full w-6 h-6 flex items-center justify-center text-xs mt-1">2</div>
-                            <div class="ml-4"><h4 class="font-bold">IIT Kanpur</h4><p class="text-sm text-gray-600">Saw a sharp increase in demand (tightened by 70 ranks).</p></div>
+                            <div class="ml-4"><h4 class="font-bold">IIT Kanpur</h4><p class="text-sm text-gray-600">Saw sharpest demand increase (tightened by ~70 ranks).</p></div>
                         </div>
                     </div>
                 </div>
-                
                 <div class="card p-6">
-                    <h3 class="font-bold mb-4">Closing Rank Trend (Lower is Harder)</h3>
+                    <h3 class="font-bold mb-4 text-center">Closing Rank Trend (2024 vs 2025)</h3>
                     <div class="chart-container" style="height: 300px;">
                         <canvas id="trendLineChart"></canvas>
                     </div>
@@ -192,10 +97,9 @@
             </div>
         </section>
 
-        <!-- Section 3: Opportunity Window -->
         <section class="mb-16">
             <div class="text-center mb-8">
-                <h2 class="text-3xl font-bold text-gray-900">The Opportunity Window</h2>
+                <h2 class="text-3xl font-bold text-gray-900">The Admission Window</h2>
                 <p class="text-gray-600 mt-2">Opening Rank (OR) vs Closing Rank (CR) for 2025.</p>
             </div>
             <div class="card p-6">
@@ -205,284 +109,39 @@
             </div>
         </section>
 
-        <!-- Section 4: AI Counselor (Rank & Questions) -->
-        <section class="mb-16">
-            <div class="text-center mb-8">
-                <span class="bg-gradient-to-r from-blue-500 to-indigo-600 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-widest shadow-lg">Powered by Gemini AI</span>
-                <h2 class="text-3xl font-bold text-gray-900 mt-4">AI Admissions Counselor</h2>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <!-- Rank Analyzer -->
-                <div class="card p-8 bg-gradient-to-br from-white to-blue-50">
-                    <h3 class="text-xl font-bold text-gray-800 mb-2">Chance Predictor</h3>
-                    <p class="text-sm text-gray-500 mb-4">Enter your JEE Advanced Rank to see realistic options.</p>
-                    <div class="flex gap-2 mb-4">
-                        <input type="number" id="rankInput" placeholder="e.g. 3500" class="w-full p-3 rounded-lg border border-gray-300 focus:outline-none focus:border-blue-500 shadow-sm">
-                        <button id="btn-analyze-rank" class="bg-primary hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg shadow-md flex items-center gap-2">
-                            <span>Analyze</span> <div class="loader hidden"></div>
-                        </button>
-                    </div>
-                    <div id="rank-result" class="hidden bg-white p-4 rounded-lg border border-gray-200 shadow-sm text-sm h-48 overflow-y-auto prose"></div>
-                </div>
-
-                <!-- Q&A Chat -->
-                <div class="card p-8 bg-gradient-to-br from-white to-sky-50">
-                    <h3 class="text-xl font-bold text-gray-800 mb-2">Ask the Expert</h3>
-                    <p class="text-sm text-gray-500 mb-4">Ask about placements, research, or curriculum.</p>
-                    <div class="flex gap-2 mb-4">
-                        <input type="text" id="questionInput" placeholder="Is Aero good for ISRO jobs?" class="w-full p-3 rounded-lg border border-gray-300 focus:outline-none focus:border-sky-500 shadow-sm">
-                        <button id="btn-ask" class="bg-secondary hover:bg-sky-600 text-white font-bold py-3 px-6 rounded-lg shadow-md flex items-center gap-2">
-                            <span>Ask</span> <div class="loader hidden"></div>
-                        </button>
-                    </div>
-                    <div id="ask-result" class="hidden bg-white p-4 rounded-lg border border-gray-200 shadow-sm text-sm h-48 overflow-y-auto prose"></div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Section 5: AI Career Scope -->
-        <section class="mb-16">
-             <div class="card p-8 bg-slate-900 text-white">
-                <h2 class="text-3xl font-bold mb-4">🚀 Beyond the Degree</h2>
-                <p class="text-gray-300 mb-6">
-                    What does 2029 look like for an Aero grad? Core jobs, Tech pivots, or Higher Ed?
-                </p>
-                <button id="btn-career" class="bg-gradient-to-r from-pink-500 to-rose-500 hover:from-pink-600 hover:to-rose-600 text-white font-bold py-3 px-6 rounded-lg shadow-lg flex items-center gap-2">
-                    <span>✨ Generate Career Horizons</span> <div class="loader hidden border-white border-t-transparent"></div>
-                </button>
-                <div id="career-result" class="hidden mt-6 p-6 bg-white/10 rounded-xl border border-white/20 text-gray-100 prose"></div>
-            </div>
-        </section>
-
-        <!-- Footer -->
-        <footer class="bg-dark text-white py-8 text-center">
-            <p class="text-gray-500 mb-2">Designed for Future Aerospace Engineers</p>
+        <footer class="bg-dark text-white py-8 text-center rounded-t-3xl">
+            <p class="text-gray-500 mb-2">Detailed Research for Future Aerospace Engineers</p>
             <div class="text-2xl mb-4">✈️ 🚀 🛰️</div>
-            <p class="text-xs text-gray-600">© 2025 EduTech Series</p>
+            <p class="text-xs text-gray-600">© 2025 IIT Aerospace Research Series</p>
         </footer>
     </main>
 
-    <!-- 3. JavaScript Logic -->
     <script>
-        // ==========================================
-        // CONFIGURATION (USER MUST SET API KEY)
-        // ==========================================
-        const apiKey = ""; // <--- PASTE YOUR GEMINI API KEY HERE inside the quotes
-        const modelId = "gemini-2.5-flash-preview-09-2025";
-        const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/${modelId}:generateContent?key=${apiKey}`;
-
-        // Data Context for the AI
-        const aiContext = `
-            You are an expert Aerospace Engineering Admissions Counselor for IITs.
-            Use this 2025 Cut-off Data (General Category Closing Ranks):
-            1. IIT Bombay: 2480 (Very Hard)
-            2. IIT Madras: 3210 (Hard)
-            3. IIT Kanpur: 3980 (Moderate-Hard)
-            4. IIT Kharagpur: 4695 (Moderate)
-            5. IIT Hyderabad: 5410 (Accessible for top 5k)
-            Trend: Ranks are dropping (competition increasing) compared to 2024.
-            Tone: Professional, encouraging, realistic, nerd-bro style. Use emojis.
-        `;
-
-        // ==========================================
-        // AI HELPER FUNCTION
-        // ==========================================
-        async function callGemini(userPrompt, systemContext) {
-            if (!apiKey) {
-                return "⚠️ **API Key Missing**: Please open the HTML file code and paste your Google Gemini API key into the `const apiKey` variable at the bottom.";
-            }
-
-            try {
-                const response = await fetch(apiUrl, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({
-                        contents: [{ parts: [{ text: userPrompt }] }],
-                        systemInstruction: { parts: [{ text: systemContext }] }
-                    })
-                });
-
-                if (!response.ok) throw new Error(`API Error: ${response.status}`);
-                const data = await response.json();
-                return data.candidates?.[0]?.content?.parts?.[0]?.text || "Sorry, I couldn't generate a response.";
-            } catch (error) {
-                console.error("AI Error:", error);
-                return "❌ Connection Error: Could not reach Gemini. Check console for details.";
-            }
-        }
-
-        // ==========================================
-        // UI HANDLERS (AI FEATURES)
-        // ==========================================
-        
-        // 1. Institute Comparator
-        document.getElementById('btn-compare').addEventListener('click', async function() {
-            const btn = this;
-            const output = document.getElementById('ai-compare-output');
-            const iit1 = document.getElementById('comp-iit-1').value;
-            const iit2 = document.getElementById('comp-iit-2').value;
-
-            if (iit1 === iit2) {
-                output.classList.remove('hidden');
-                output.innerHTML = "Please select two different institutes.";
-                return;
-            }
-
-            btn.disabled = true;
-            btn.innerHTML = "Comparing...";
-            output.classList.remove('hidden');
-            output.innerHTML = "Thinking...";
-
-            const prompt = `Compare ${iit1} and ${iit2} for Aerospace Engineering. Focus on Labs, Placements, and Campus Vibe. Table format preferred.`;
-            const text = await callGemini(prompt, aiContext);
-            
-            output.innerHTML = marked.parse(text);
-            btn.disabled = false;
-            btn.innerHTML = "Compare A vs B";
-        });
-
-        // 2. Trend Analysis
-        document.getElementById('btn-analyze-trend').addEventListener('click', async function() {
-            const btn = this;
-            const output = document.getElementById('ai-trend-output');
-            
-            btn.disabled = true;
-            output.classList.remove('hidden');
-            output.innerHTML = "Analyzing data...";
-
-            const prompt = "Explain the 'Rank Inflation' trend in Aerospace Engineering from 2024 to 2025 based on the data provided. Why is it getting harder? Bullet points.";
-            const text = await callGemini(prompt, aiContext);
-            
-            output.innerHTML = marked.parse(text);
-            btn.disabled = false;
-        });
-
-        // 3. Rank Analyzer
-        document.getElementById('btn-analyze-rank').addEventListener('click', async function() {
-            const btn = this;
-            const rank = document.getElementById('rankInput').value;
-            const output = document.getElementById('rank-result');
-            const loader = btn.querySelector('.loader');
-
-            if (!rank) return;
-
-            btn.disabled = true;
-            loader.classList.remove('hidden');
-            output.classList.remove('hidden');
-            output.innerHTML = "Checking your chances...";
-
-            const prompt = `My JEE Rank is ${rank}. Which of the 5 IITs (Bombay, Madras, Kanpur, KGP, Hyd) can I likely get into for Aerospace based on 2025 Closing Ranks? Be honest.`;
-            const text = await callGemini(prompt, aiContext);
-            
-            output.innerHTML = marked.parse(text);
-            btn.disabled = false;
-            loader.classList.add('hidden');
-        });
-
-        // 4. Ask Expert
-        document.getElementById('btn-ask').addEventListener('click', async function() {
-            const btn = this;
-            const q = document.getElementById('questionInput').value;
-            const output = document.getElementById('ask-result');
-            const loader = btn.querySelector('.loader');
-
-            if (!q) return;
-
-            btn.disabled = true;
-            loader.classList.remove('hidden');
-            output.classList.remove('hidden');
-            output.innerHTML = "Consulting the database...";
-
-            const text = await callGemini(q, aiContext);
-            
-            output.innerHTML = marked.parse(text);
-            btn.disabled = false;
-            loader.classList.add('hidden');
-        });
-
-        // 5. Career Scope
-        document.getElementById('btn-career').addEventListener('click', async function() {
-            const btn = this;
-            const output = document.getElementById('career-result');
-            const loader = btn.querySelector('.loader');
-
-            btn.disabled = true;
-            loader.classList.remove('hidden');
-            output.classList.remove('hidden');
-            output.innerHTML = "Generating future timelines...";
-
-            const prompt = "Create a vivid career timeline for an IIT Aerospace grad graduating in 2029. Include ISRO missions, private tech options, and non-core pivots.";
-            const text = await callGemini(prompt, aiContext);
-            
-            output.innerHTML = marked.parse(text);
-            btn.disabled = false;
-            loader.classList.add('hidden');
-        });
-
-        // ==========================================
-        // CHART INITIALIZATION
-        // ==========================================
         window.onload = function() {
-            // Label Wrapping Helper
-            const wrap = (str) => {
-                if(str.length <= 15) return str;
-                const words = str.split(' ');
-                return [words.slice(0, Math.ceil(words.length/2)).join(' '), words.slice(Math.ceil(words.length/2)).join(' ')];
-            };
-            
+            const wrap = (str) => str.length <= 15 ? str : [str.split(' ').slice(0, 2).join(' '), str.split(' ').slice(2).join(' ')];
             const iits = ['IIT Bombay', 'IIT Madras', 'IIT Kanpur', 'IIT Kharagpur', 'IIT Hyderabad'];
             const data2025 = [2480, 3210, 3980, 4695, 5410];
             const data2024 = [2568, 3345, 4050, 4780, 5500];
 
-            // 1. Bar Chart
             new Chart(document.getElementById('cutoffBarChart'), {
                 type: 'bar',
-                data: {
-                    labels: iits.map(wrap),
-                    datasets: [{
-                        label: '2025 Closing Rank',
-                        data: data2025,
-                        backgroundColor: '#2563eb',
-                        borderRadius: 6
-                    }]
-                },
+                data: { labels: iits.map(wrap), datasets: [{ label: '2025 Closing Rank', data: data2025, backgroundColor: '#2563eb', borderRadius: 6 }] },
                 options: { responsive: true, maintainAspectRatio: false }
             });
 
-            // 2. Line Chart
             new Chart(document.getElementById('trendLineChart'), {
                 type: 'line',
-                data: {
-                    labels: ['Bombay', 'Madras', 'Kanpur', 'Kharagpur', 'Hyderabad'],
-                    datasets: [
-                        { label: '2024', data: data2024, borderColor: '#94a3b8', tension: 0.4 },
-                        { label: '2025', data: data2025, borderColor: '#0ea5e9', borderWidth: 3, tension: 0.4 }
-                    ]
-                },
+                data: { labels: ['Bombay', 'Madras', 'Kanpur', 'KGP', 'Hyd'], datasets: [
+                    { label: '2024', data: data2024, borderColor: '#94a3b8', tension: 0.4 },
+                    { label: '2025', data: data2025, borderColor: '#0ea5e9', borderWidth: 3, tension: 0.4 }
+                ]},
                 options: { responsive: true, maintainAspectRatio: false }
             });
 
-            // 3. Range Chart (Floating Bar)
             new Chart(document.getElementById('rangeChart'), {
                 type: 'bar',
-                data: {
-                    labels: iits.map(wrap),
-                    datasets: [{
-                        label: 'Rank Range',
-                        data: [[850, 2480], [1700, 3210], [2200, 3980], [2800, 4695], [3600, 5410]],
-                        backgroundColor: ['#2563eb', '#0ea5e9', '#f59e0b', '#10b981', '#8b5cf6'],
-                        borderRadius: 10,
-                        barPercentage: 0.5
-                    }]
-                },
-                options: { 
-                    indexAxis: 'y', 
-                    responsive: true, 
-                    maintainAspectRatio: false,
-                    scales: { x: { min: 0 } },
-                    plugins: { tooltip: { callbacks: { label: (c) => ` OR: ${c.raw[0]} - CR: ${c.raw[1]}` } } }
-                }
+                data: { labels: iits.map(wrap), datasets: [{ label: 'Rank Range (OR to CR)', data: [[850, 2480], [1700, 3210], [2200, 3980], [2800, 4695], [3600, 5410]], backgroundColor: ['#2563eb', '#0ea5e9', '#f59e0b', '#10b981', '#8b5cf6'], borderRadius: 10 }] },
+                options: { indexAxis: 'y', responsive: true, maintainAspectRatio: false, plugins: { tooltip: { callbacks: { label: (c) => ` OR: ${c.raw[0]} - CR: ${c.raw[1]}` } } } }
             });
         };
     </script>
